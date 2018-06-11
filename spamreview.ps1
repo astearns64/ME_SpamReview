@@ -10,4 +10,4 @@ $i = Get-ChildItem $Path -Filter $FileType|
         Group-Object -NoElement |
             Sort-Object -Descending Count|
                 FT -Auto |
-		                Out-File -FilePath $OutputFile
+		    Out-File -FilePath $OutputFile
