@@ -14,7 +14,7 @@ $i = Get-ChildItem $Path -Filter $FileType|
                 Select-String -Pattern 'FROM:<'
 
 #Extract the email addresses from the prior results, get a count for each unique address, and print those results to a file
-[Regex]::Matches($i, '(?<=\<).+?(?=\>)') | 
+[Regex]::Matches($i, '(?<=FROM\:\<).+?(?=\>)') | 
     %{$_.value} |
         Group-Object -NoElement |
             Sort-Object -Descending Count|
