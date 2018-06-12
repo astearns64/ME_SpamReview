@@ -10,7 +10,8 @@ $OutputFile = "C:\temp\spamreview.log" #This is the location where it will print
 #Get all lines from the log file(s) which contain "FROM:<"
 $i = Get-ChildItem $Path -Filter $FileType|
         Get-Content |
-            Select-String -Pattern 'FROM:<'
+	    Where-Object { $_ -NotMatch "SMTP-IN"} |
+                Select-String -Pattern 'FROM:<'
 
 #Extract the email addresses from the prior results, get a count for each unique address, and print those results to a file
 [Regex]::Matches($i, '(?<=\<).+?(?=\>)') | 
