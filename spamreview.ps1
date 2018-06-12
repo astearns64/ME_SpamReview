@@ -5,9 +5,9 @@ $Path = "C:\Program Files (x86)\Parallels\Plesk\Mail Servers\Mail Enable\Logging
 $FileType = "SMTP-Activity-*.log"
 
 #Specify where you want the output to be logged
-$OutputFile = "C:\temp\spamreview.log" #This is the location where it will print the results from the command.
+$OutputFile = "C:\temp\spamreview.log"
 
-#Get all lines from the log file(s) which contain "FROM:<"
+#Get all lines from the log file(s) which contain "FROM:<", excluding any which also contain the string "SMTP-IN"
 $i = Get-ChildItem $Path -Filter $FileType|
         Get-Content |
 	    Where-Object { $_ -NotMatch "SMTP-IN"} |
