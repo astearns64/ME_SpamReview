@@ -7,7 +7,7 @@ $FileType = "SMTP-Activity-*.log"
 #Specify where you want the output to be logged
 $OutputFile = "C:\temp\spamreview.log"
 
-#Get all lines from the log file(s) which contain "FROM:<", excluding any which also contain the string "SMTP-IN"
+#Get all lines from the log file(s) which contain "SMTP-OU" and "FROM:<"
 $i = Get-ChildItem $Path -Filter $FileType|
         Get-Content |
 	    Where-Object { $_ -Match "SMTP-OU"} |
